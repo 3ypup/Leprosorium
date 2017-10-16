@@ -6,27 +6,22 @@
 </head>
 
 <body>
-
+<br/>
 <h2> <% @results.each do |post| %>
+	<br/>
 	<p>
 		<%= post['content'] %>
 		<br/>
 		added at:<%= post['created_date'] %>
 	</p>
-
+	
+	<a name = "post_id" href = "/details/<%= post['id'] %>">Comments </a>
 	<br/>
 
-	<a href = "posts/<%= post['id'] %>">Comments </a>
 
 <% end %> 
 
-
-
-
-
 </body>
-
-
 
 
 </html>

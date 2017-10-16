@@ -44,12 +44,15 @@ post '/new' do
   	
   @content = params[:content]
 
-  if @content.size <= 0
+  if @content.size < 1
+  	
   		@error = "Введите же текст!"
-  end
-
+  
+else
   @db.execute 'insert into Posts (content, created_date) values (?, datetime())', [@content]
+	
 
+end
   erb :new
 
 redirect to '/'
@@ -62,5 +65,21 @@ get '/' do
 	@results = @db.execute 'select * from Posts order by id desc' 
 
 	erb :index
+
+end
+
+
+get '/details/:post_id' do
+	
+	@num = params[:post_id]
+
+	@post = @num
+
+	@row  =  @db.execute "select * from Posts where id = #{@num}"
+
+	
+
+	erb :details
+
 
 end

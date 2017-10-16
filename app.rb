@@ -24,7 +24,7 @@ configure do
 end
 
 get '/' do
-	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
+	erb :index
 end
 
 
@@ -53,6 +53,12 @@ post '/new' do
   	end
 
   @db.execute 'insert into Posts (content, created_date) values (?, datetime())', [@content]
+
+
+
+  @results = @db.execute 'select * fro, Posts order by id desc'
+
+
 
   erb :new
 

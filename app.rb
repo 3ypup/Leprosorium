@@ -34,9 +34,6 @@ end
 
 
 
-get '/newpost' do
-  "Hello World"
-end
 
 
 
@@ -53,7 +50,15 @@ post '/new' do
   	
   	@content = params[:content]
 
-  	erb = @content
+  	if @content.size <= 0
+  		@error = "Введите же текст!"
+  	end
+
+  
+
+  	erb :new
+
+
 
 
 

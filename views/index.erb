@@ -7,6 +7,19 @@
 
 <body>
 
+<h2> <% @results.each do |post| %>
+	<p>
+		<%= post['content'] %>
+		<br/>
+		added at:<%= post['created_date'] %>
+	</p>
+
+<% end %> 
+
+
+
+
+
 </body>
 
 

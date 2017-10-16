@@ -5,7 +5,7 @@ require 'sinatra/reloader'
 require 'sqlite3'
 
 def init_db
-	@db = SQLite3::Database.new 'leprosorium.db'
+	@db = SQLite3::Database.new 'public/leprosorium.db'
 	@db.results_as_hash = true
 end
 
@@ -23,9 +23,6 @@ configure do
 
 end
 
-get '/' do
-	erb :index
-end
 
 
 get '/main' do
@@ -37,33 +34,34 @@ end
 
 get '/new' do
 
-erb :new
+	erb :new
 
 end
 
 
 
 
+ 
+
 post '/new' do
   	
-  	@content = params[:content]
+  @content = params[:content]
 
-  	if @content.size <= 0
+  if @content.size <= 0
   		@error = "Введите же текст!"
-  	end
+  end
 
   @db.execute 'insert into Posts (content, created_date) values (?, datetime())', [@content]
 
-
-
-  @results = @db.execute 'select * fro, Posts order by id desc'
-
-
-
   erb :new
 
+end
 
 
+get '/' do
 
+	@results = @db.execute 'select * from Posts order by id desc' 
+
+	erb :index
 
 end

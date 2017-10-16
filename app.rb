@@ -38,9 +38,6 @@ get '/new' do
 
 end
 
-
-
-
  
 
 post '/new' do

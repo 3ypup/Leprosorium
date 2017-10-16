@@ -35,8 +35,6 @@ end
 
 
 
-
-
 get '/new' do
 
 erb :new
@@ -54,9 +52,9 @@ post '/new' do
   		@error = "Введите же текст!"
   	end
 
-  
+  @db.execute 'insert into Posts (content, created_date) values (?, datetime())', [@content]
 
-  	erb :new
+  erb :new
 
 
 

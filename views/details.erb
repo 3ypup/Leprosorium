@@ -5,19 +5,22 @@
 </head>
 
 
-<body
-
+<body>
+ <h2>
+ <% @row.each do |post| %>
+	<br/>
 	<p>
-	<br/>
-		<%= @row[0][2] %>
-	<br/>
-		added at:<%= @row[0][1] %>
-	<br/>
+		<%= post['content'] %>
+		<br/>
+		added at:<%= post['created_date'] %>
 	</p>
+	
+	
 
+	<br/>
 
-
-
+<% end %>
+</h2>
 </body>
 
 </html>

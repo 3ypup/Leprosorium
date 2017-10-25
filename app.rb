@@ -4,6 +4,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+
 def init_db
 	@db = SQLite3::Database.new 'public/leprosorium.db'
 	@db.results_as_hash = true
@@ -75,7 +76,7 @@ get '/details/:post_id' do
 
 	@post = @num
 
-	@row  =  @db.execute "select * from Posts where id = #{@num}"
+	@row  =  @db.execute "select * from Posts where id = ?",[@num] 
 
 	
 
